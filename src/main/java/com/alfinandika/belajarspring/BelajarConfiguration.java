@@ -32,7 +32,7 @@ public class BelajarConfiguration {
         return bean;
     }
 
-    @Bean
+     @Bean
     public SampleBean createSampleBean(@Qualifier("alfin") DataBean dataBean){
         SampleBean bean = new SampleBean(dataBean);
 
