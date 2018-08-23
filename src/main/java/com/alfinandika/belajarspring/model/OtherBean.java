@@ -1,9 +1,15 @@
 package com.alfinandika.belajarspring.model;
 
-public class OtherBean {
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+//implements ApplicationContextAware untuk dapat mengakses ApplicationContext
+public class OtherBean implements ApplicationContextAware {
 
     private DataBean dataBean;
     private SampleBean sampleBean;
+    private ApplicationContext context;
 
     public OtherBean(DataBean dataBean, SampleBean sampleBean) {
         this.dataBean = dataBean;
@@ -24,5 +30,11 @@ public class OtherBean {
 
     public void setSampleBean(SampleBean sampleBean) {
         this.sampleBean = sampleBean;
+    }
+
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.context = applicationContext;
     }
 }

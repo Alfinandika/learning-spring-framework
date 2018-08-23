@@ -16,7 +16,8 @@ import java.util.UUID;
 public class BelajarConfiguration {
 
     @Bean(name="alfin")
-    @Scope("prototype")
+
+    @Scope("prototype") //kalau dirubah menjadi singeton maka setiap bean yg dipanggil tidak akan membuat object baru
     public DataBean createDataBean(){
         String random = UUID.randomUUID().toString();
         DataBean bean = new DataBean(random);
@@ -32,7 +33,7 @@ public class BelajarConfiguration {
         return bean;
     }
 
-     @Bean
+    @Bean
     public SampleBean createSampleBean(@Qualifier("alfin") DataBean dataBean){
         SampleBean bean = new SampleBean(dataBean);
 
