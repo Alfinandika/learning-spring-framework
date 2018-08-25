@@ -1,23 +1,27 @@
 package com.alfinandika.belajarspring;
 
-import com.alfinandika.belajarspring.model.DataBean;
-import com.alfinandika.belajarspring.model.OtherBean;
-import com.alfinandika.belajarspring.model.SampleBean;
-import com.alfinandika.belajarspring.model.sayHello;
+import com.alfinandika.belajarspring.model.*;
 import com.alfinandika.belajarspring.service.DatabaseConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.io.IOException;
+import java.util.Locale;
+
 public class BelajarspringApplication {
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		//set profile
 		System.setProperty("spring.profiles.active", "production");
+		Locale.setDefault(new Locale("in", "ID"));
 
 		ApplicationContext context = SpringApplication.run(BelajarConfiguration.class, args);
+
+		FileBean fileBean = context.getBean(FileBean.class);
+		fileBean.printInfo();
 
 		//DataBean dataBean = context.getBean(DataBean.class);
 		//System.out.println(dataBean.getValue());
@@ -47,7 +51,7 @@ public class BelajarspringApplication {
 		//SampleBean sampleBean = context.getBean(SampleBean.class);
 		//System.out.println(sampleBean.getDataBean().getValue());
 
-		DatabaseConfig config = context.getBean(DatabaseConfig.class);
-		System.out.println(config.getValue());
+		//DatabaseConfig config = context.getBean(DatabaseConfig.class);
+		//System.out.println(config.getValue());
 	}
 }
