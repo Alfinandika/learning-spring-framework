@@ -3,12 +3,10 @@ package com.alfinandika.belajarspring;
 import com.alfinandika.belajarspring.model.DataBean;
 import com.alfinandika.belajarspring.model.OtherBean;
 import com.alfinandika.belajarspring.model.SampleBean;
+import com.alfinandika.belajarspring.service.DatabaseConfig;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
 import java.util.UUID;
 
@@ -45,5 +43,17 @@ public class BelajarConfiguration {
         OtherBean bean = new OtherBean(dataBean, sampleBean);
 
         return bean;
+    }
+
+    @Bean
+    @Profile("development")
+    public DatabaseConfig createDevDatabaseConfig(){
+        return new DatabaseConfig("Database Development");
+    }
+
+    @Bean
+    @Profile("production")
+    public DatabaseConfig createProdDatabaseConfig(){
+        return new DatabaseConfig("Database Production");
     }
 }

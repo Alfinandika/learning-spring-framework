@@ -4,6 +4,7 @@ import com.alfinandika.belajarspring.model.DataBean;
 import com.alfinandika.belajarspring.model.OtherBean;
 import com.alfinandika.belajarspring.model.SampleBean;
 import com.alfinandika.belajarspring.model.sayHello;
+import com.alfinandika.belajarspring.service.DatabaseConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -12,6 +13,10 @@ public class BelajarspringApplication {
 
 
 	public static void main(String[] args) {
+
+		//set profile
+		System.setProperty("spring.profiles.active", "production");
+
 		ApplicationContext context = SpringApplication.run(BelajarConfiguration.class, args);
 
 		//DataBean dataBean = context.getBean(DataBean.class);
@@ -30,16 +35,19 @@ public class BelajarspringApplication {
 		//System.out.println(hello);
 
 		//Belajar dan memahami Scope
-		DataBean alfin1 = context.getBean("alfin", DataBean.class);
-		System.out.println(alfin1.getValue());
+		//DataBean alfin1 = context.getBean("alfin", DataBean.class);
+		//System.out.println(alfin1.getValue());
 
-		DataBean alfin2 = context.getBean("alfin", DataBean.class);
-		System.out.println(alfin2.getValue());
+		//DataBean alfin2 = context.getBean("alfin", DataBean.class);
+		//System.out.println(alfin2.getValue());
 
-		DataBean alfin3 = context.getBean("alfin", DataBean.class);
-		System.out.println(alfin3.getValue());
+		//DataBean alfin3 = context.getBean("alfin", DataBean.class);
+		//System.out.println(alfin3.getValue());
 
-		SampleBean sampleBean = context.getBean(SampleBean.class);
-		System.out.println(sampleBean.getDataBean().getValue());
+		//SampleBean sampleBean = context.getBean(SampleBean.class);
+		//System.out.println(sampleBean.getDataBean().getValue());
+
+		DatabaseConfig config = context.getBean(DatabaseConfig.class);
+		System.out.println(config.getValue());
 	}
 }
