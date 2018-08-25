@@ -1,22 +1,40 @@
 package com.alfinandika.belajarspring;
 
+import com.alfinandika.belajarspring.model.Author;
 import com.alfinandika.belajarspring.model.DataBean;
 import com.alfinandika.belajarspring.model.OtherBean;
 import com.alfinandika.belajarspring.model.SampleBean;
 import com.alfinandika.belajarspring.service.DatabaseConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.env.Environment;
 
 import java.util.UUID;
 
 @SpringBootApplication
+@PropertySources({
+        @PropertySource("classpath:/configuration/contoh.properties")
+})
 public class BelajarConfiguration {
 
-    @Bean(name="alfin")
+    @Autowired
+    private Environment environment;
 
+    @Bean
+    public Author createAuthor(){
+        String name = environment.getProperty("author.name");
+        String email = environment.getProperty("author.email");
+
+        Author author = new Author(name, email);
+
+        return author;
+    }
+
+    @Bean(name="alfin")
     @Scope("prototype") //kalau dirubah menjadi singeton maka setiap bean yg dipanggil tidak akan membuat object baru
     public DataBean createDataBean(){
         String random = UUID.randomUUID().toString();

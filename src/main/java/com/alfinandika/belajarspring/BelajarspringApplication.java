@@ -20,8 +20,9 @@ public class BelajarspringApplication {
 
 		ApplicationContext context = SpringApplication.run(BelajarConfiguration.class, args);
 
-		FileBean fileBean = context.getBean(FileBean.class);
-		fileBean.printInfo();
+
+
+
 
 		//DataBean dataBean = context.getBean(DataBean.class);
 		//System.out.println(dataBean.getValue());
@@ -53,5 +54,12 @@ public class BelajarspringApplication {
 
 		//DatabaseConfig config = context.getBean(DatabaseConfig.class);
 		//System.out.println(config.getValue());
+
+		//FileBean fileBean = context.getBean(FileBean.class);
+		//fileBean.printInfo();
+
+		Author author = context.getBean(Author.class);
+		System.out.println(author.getName());
+		System.out.println(author.getEmail());
 	}
 }
