@@ -24,16 +24,6 @@ public class BelajarConfiguration {
     @Autowired
     private Environment environment;
 
-    @Bean
-    public Author createAuthor(){
-        String name = environment.getProperty("author.name");
-        String email = environment.getProperty("author.email");
-
-        Author author = new Author(name, email);
-
-        return author;
-    }
-
     @Bean(name="alfin")
     @Scope("prototype") //kalau dirubah menjadi singeton maka setiap bean yg dipanggil tidak akan membuat object baru
     public DataBean createDataBean(){

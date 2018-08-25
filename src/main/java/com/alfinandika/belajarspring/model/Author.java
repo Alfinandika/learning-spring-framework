@@ -1,10 +1,16 @@
 package com.alfinandika.belajarspring.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Author {
     private String name;
     private String email;
 
-    public Author(String name, String email) {
+    @Autowired
+    public Author(@Value("${author.name}") String name,@Value("${author.email}") String email) {
         this.name = name;
         this.email = email;
     }
