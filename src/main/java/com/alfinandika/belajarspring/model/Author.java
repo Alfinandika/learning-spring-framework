@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Author {
+
     private String name;
+
     private String email;
 
     @Autowired

@@ -12,7 +12,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+import javax.validation.Validator;
 import java.util.UUID;
 
 @SpringBootApplication
@@ -73,5 +75,10 @@ public class BelajarConfiguration {
         messageSource.setBasename("messages.hello");
 
         return messageSource;
+    }
+
+    @Bean
+    public Validator createValidator(){
+        return new LocalValidatorFactoryBean();
     }
 }
