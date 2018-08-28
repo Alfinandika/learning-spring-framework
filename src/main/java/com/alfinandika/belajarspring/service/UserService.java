@@ -16,6 +16,6 @@ public class UserService {
     }
 
     public User getById(@NotBlank String id){
-        return null
+        return null;
     }
 }

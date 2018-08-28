@@ -86,29 +86,33 @@ public class BelajarspringApplication {
 //			System.out.println("tidak ada error");
 //		}
 
-		Validator validator = context.getBean(Validator.class);
-
-		User user = new User();
-		user.setEmail("salah");
-		user.setId("0");
-		user.setName("");
-
-//		Set<ConstraintViolation<User>> result =  validator.validate(user);
+//		Validator validator = context.getBean(Validator.class);
 //
-//		result.forEach((constraint) -> {
-//			System.out.println(constraint.getMessage());
-//		});
+//		User user = new User();
+//		user.setEmail("salah");
+//		user.setId("0");
+//		user.setName("");
+//
+////		Set<ConstraintViolation<User>> result =  validator.validate(user);
+////
+////		result.forEach((constraint) -> {
+////			System.out.println(constraint.getMessage());
+////		});
+//
+//		UserService service = context.getBean(UserService.class);
+//
+//
+//		try{
+//			service.save(user);
+//		}catch (ConstraintViolationException ex){
+//			ex.getConstraintViolations().stream().forEach((error) -> {
+//				System.out.println(error.getMessage());
+//			});
+//		}
 
-		UserService service = context.getBean(UserService.class);
-
-
-		try{
-			service.save(user);
-		}catch (ConstraintViolationException ex){
-			ex.getConstraintViolations().stream().forEach((error) -> {
-				System.out.println(error.getMessage());
-			});
-		}
+		Contoh contoh = context.getBean(Contoh.class);
+		System.out.println(contoh.getAuthorName());
+		System.out.println(contoh.getNilai());
 
 		//Author author = context.getBean(Author.class);
 		//System.out.println(author.getName());
