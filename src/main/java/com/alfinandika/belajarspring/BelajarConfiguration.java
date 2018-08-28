@@ -13,6 +13,7 @@ import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 
 import javax.validation.Validator;
 import java.util.UUID;
@@ -81,4 +82,10 @@ public class BelajarConfiguration {
     public Validator createValidator(){
         return new LocalValidatorFactoryBean();
     }
+
+    @Bean
+    public MethodValidationPostProcessor createMethodValidationPostProcessor(){
+        return new MethodValidationPostProcessor();
+    }
+
 }
